@@ -1,0 +1,31 @@
+<app-admin-dashboard></app-admin-dashboard>
+
+
+<form [formGroup]="blockFlightForm">
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-6">
+        <div class="row" style="background-color:white;padding:10px; margin-top: 10px;">
+            <h6 style="text-align: center;color:goldenrod;"><b>Block Airline</b></h6>
+        </div><div><br></div>
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3"><b>Airline Id</b></div>
+            <div class="col-sm-6">
+                <input type="text" formControlName="scheduleId" class="form-control" placeholder="Airline ID" />
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+                        
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-sm-1"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-4">
+                    <input type="button" (click)="blockFlight(blockFlightForm.value)"  value="Block Airline" class="btn btn-primary mt-3" />
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-1"></div>
+            </div>
+    </div>
+</div>
+<p class="text-success">{{responseMsg}}</p>
+</form>    

@@ -1,0 +1,59 @@
+<app-user-home></app-user-home>
+<form [formGroup]="searchForm">
+    <h2 class="row d-flex justify-content-center" style="margin-top: 20px;">Flight Search</h2> <br>
+    <div class="col-sm-4 offset-4 d-flex justify-content-center" ><b>Source:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" formControlName="FromPlace" placeholder="Enter Source" class="form-control"/>
+    </div><div ><br></div>
+    
+    <div class="col-lg-4 offset-4 d-flex"><b>Destination:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" formControlName="ToPlace" placeholder="Enter Destination" class="form-control"/>
+    </div><div ><br></div>
+
+    <div class="col-lg-4 offset-4 d-flex"><b>StartDate:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="datetime-local" formControlName="StartDateTime" class="form-control"/>
+    </div><div ><br></div>
+
+    <div class="col-lg-4 offset-4 d-flex"><b>EndDate:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="datetime-local" formControlName="EndDateTime" class="form-control"/>
+    </div><div ><br></div>
+    
+    <div class="col-sm-5" style="text-align: center;margin-top: 10px;align-items: center;"><br>
+        <button type="button" (click)="SearchFlight(searchForm.value)" class="btn btn-primary mx-2 text-center">Search</button>
+    </div>
+
+  
+    </form>
+    
+    <div class="row d-flex justify-content-center" *ngIf="searchres">
+        <div class="col-sm-10">
+            <h1 style="text-align: center; margin-top: 20px;">Search Results</h1>
+            <div><br></div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Airline ID </th>
+                    <!--<th>Airline Name</th> -->
+                    <th>Source</th> 
+                    <th>Destination</th> 
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Ticket Cost</th>
+                    <th>non business</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let flight of flights">
+                        <td>{{flight.flightId}} </td>
+                        <!--<td>{{flight.flightName}}</td>-->
+                        <td>{{flight.fromPlace}}</td>
+                        <td>{{flight.toPlace}}</td>
+                        <td>{{flight.startDateTime}}</td>
+                        <td>{{flight.endDateTime}}</td>
+                        <td>{{flight.businessTicketCost}}</td>
+                        <td>{{flight.nonBusinessTicketCost}}</td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+        </div>

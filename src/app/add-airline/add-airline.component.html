@@ -1,0 +1,21 @@
+<app-admin-dashboard></app-admin-dashboard>
+<nav class="navbar navbar-dark bg-dark" >
+    <div class="row"><br><br></div>
+
+    <div class="container-fluid">
+        <h1 class="navbar-brand" style="color: whitesmoke; margin-left: 10px;">Add Airline</h1>
+       
+    </div>
+  
+</nav>
+<form  [formGroup]="airline" (ngSubmit)="onAirlineSubmit()">
+
+    <div class="form-group">
+        <label for="airlineName" style="color: rgb(189, 15, 15);"><b>Airline Name</b></label>
+        <input type="text" size="10" formControlName="airlineName" placeholder="Enter Airline" name="airlineName"  ngModel required>
+        <span class="text-danger" *ngIf="(f.airlineName.touched || submitted) && f.airlineName.errors?.required"><small>Please enter airline name</small></span>
+                         
+    </div>
+    <button type="submit"  style="width: min-content;" class="btn btn-success">Add</button>
+    </form>
+<p class="text-danger">{{responseData}}</p>

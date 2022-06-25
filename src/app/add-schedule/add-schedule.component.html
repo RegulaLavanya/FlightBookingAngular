@@ -1,0 +1,163 @@
+<app-admin-dashboard></app-admin-dashboard>
+<form [formGroup]="scheduleForm">
+    <div class="row d-flex justify-content-center">
+    
+        <div class="col-sm-6">
+            <div class="row" style="background-color:white;padding:10px;">
+                <div class="col-sm-12" style="text-align: center; margin-top: 10px;">
+                    <h6 style="color:darkmagenta"><b>Schedule Airline</b></h6>
+                </div>
+            </div>
+
+           <!-- <div class="row" style="margin-bottom:20px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>Airline ID</b></div>
+                <div class="col-sm-6">
+                    <select style="width: min-content;" formControlName="AirLineId" [(ngModel)]="airline"   (change)="selected()" formControlName="airline" class="form-control">
+                        <option disabled  >Select Airline</option>
+                    <option *ngFor="let web of airlineList" name="web.airlineName" [ngValue]="web.id">{{web.airlineName}}</option>
+                    </select>
+                 </div>
+                <div class="col-sm-1"></div>
+         </div>-->
+
+           <div class="row" style="margin-bottom:20px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>Airline ID</b></div>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="AirLineId" class="form-control" placeholder="Airline ID" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b> Flight ID</b></div>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="FlightId" class="form-control" placeholder="Flight ID" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b> Source</b></div>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="FromPlace" class="form-control" placeholder="From Place" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b> Destination</b></div>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="ToPlace" class="form-control" placeholder="To Place" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>Start Date</b></div>
+                <div class="col-sm-6">
+                    <input type="datetime-local" formControlName="StartDateTime" class="form-control"/>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>End Date</b></div>
+                <div class="col-sm-6">
+                    <input type="datetime-local" formControlName="EndDateTime" class="form-control"/>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+          <!-- <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>Scheduled Days</b></div>
+                <div class="col-sm-6" >                
+                    <select class="form-select" formControlName="ScheduledDays">
+                        <option value = 'Daily'> Daily </option>
+                        <option value = 'Weekdays'> Weekdays </option>
+                        <option value = 'Weekends'> Weekends </option>
+                    </select>
+                </div>
+                <div class="col-sm-1"></div>
+            </div> -->
+            
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b> Total seats</b></div>
+                <div class="col-sm-6">
+                    <input type="number" formControlName="TotalSeats" class="form-control" placeholder="Total seats" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b> Business class seats</b></div>
+                <div class="col-sm-6">
+                    <input type="number" formControlName="BusinessClassSeats" class="form-control" placeholder="No of Business class seats" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>Non Business class seats</b></div>
+                <div class="col-sm-6">
+                    <input type="number" formControlName="NonBusinessClassSeats" class="form-control" placeholder="No of Non Business class seats" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>BusinessTicket Cost</b></div>
+                <div class="col-sm-6">
+                    <input type="number" formControlName="BusinessTicketCost" name="txttktcost" class="form-control" placeholder="Business Ticket Cost" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>Non BusinessTicket Cost</b></div>
+                <div class="col-sm-6">
+                    <input type="number" formControlName="NonBusinessTicketCost" name="txttktcost" class="form-control" placeholder="Non Business Ticket Cost" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><b>Meal</b></div>
+                <div class="col-sm-6">
+                    <select formControlName="MealOption" class="form-select">
+                        <option value = 0> None </option>
+                        <option value = 1> Veg </option>
+                        <option value = 2> Non-Veg </option>
+                    </select>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                <div class="row" style="margin-bottom:10px;margin-left: 100px;">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-3">
+                        <input type="button" (click)="Schedule(scheduleForm.value)" value="Schedule Airline" class="btn btn-primary mt-3" />
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</form> 

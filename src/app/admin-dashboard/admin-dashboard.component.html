@@ -1,0 +1,23 @@
+
+
+<nav class="navbar navbar-dark bg-dark" >
+    <div class="row"><br><br></div>
+
+    <div class="container-fluid">
+        <h1 class="navbar-brand"  style="color: whitesmoke; margin-left: 10px;">Admin Dashboard</h1>
+        <div class="d-flex">
+             <button routerLink="/airline"  class="btn btn-success mx-3">Add Airline</button> 
+            <button routerLink="/addflight"  class="btn btn-success mx-3">Add Flight</button>
+            <button routerLink="/addSchedule"  class="btn btn-success mx-4">Add Schedule</button>
+            <button routerLink="/blockFlight"  class="btn btn-success mx-3">Block Airline</button>
+            
+            <button (click)="Logout()"  class="btn btn-danger mx-3">LogOut</button>
+        </div>
+    </div>
+</nav>
+<!--style="background-color: blueviolet;border-color: ghostwhite"
+<div>
+    <app-add-airline [showMePartially]="showVar"></app-add-airline>
+</div>-->
+
+

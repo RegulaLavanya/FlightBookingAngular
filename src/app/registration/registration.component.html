@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+
+
+<form  [formGroup]="registrationForm" (ngSubmit)="onRegSubmit()">
+
+
+  <div class="container">
+    <div class="form-group">
+        <label for="uname"><b>Username</b></label>
+        <input type="text"  formControlName="uname" placeholder="Enter Username" name="uname"  ngModel required>
+     
+        <span class="text-danger" *ngIf="(f.uname.touched || submitted) && f.uname.errors?.required"><small>Please enter your name</small></span>
+                         
+    </div>
+
+    <div class="form-group">
+      <label for="email"><b>Email</b></label>
+      <input type="email"  formControlName="email" placeholder="Enter Email" name="email"  ngModel>
+         <span class="text-danger"
+            *ngIf="(f.email.touched || submitted) && f.email.errors?.required">
+            Email is required
+        </span>
+        <span class="text-danger"
+            *ngIf="f.email.touched && f.email.errors?.email">
+            Enter a valid email address
+        </span>
+    </div>
+
+    <div class="form-group">
+    <label for="psw"><b>Password</b></label>
+    <input type="password" formControlName="pwd" placeholder="Enter Password" name="pwd"  ngModel>
+    <span class="text-danger"
+    *ngIf="(f.pwd.touched || submitted) && f.pwd.errors?.required">
+    Password is required
+</span>
+<span class="text-danger"
+    *ngIf=" f.pwd.errors?.invalidPassword">
+    Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+    letter and 1 number
+</span>  
+  </div>
+
+  <div class="form-group">
+    <label><b>Confirm Password</b></label>
+    <input type="password" placeholder="Confirm Password" formControlName="confirmPwd" name="confirmPwd"  ngModel>
+    <span class="text-danger"
+        *ngIf="(f.confirmPwd.touched || submitted)&& f.confirmPwd.errors?.required">
+        Confirm Password is required
+    </span>
+    <span class="text-danger"
+    *ngIf="(f.confirmPwd.touched || submitted)&& f.confirmPwd.errors?.minLength">
+    minLength is required
+    </span>
+    <span class="text-danger"
+        *ngIf="f.confirmPwd.touched && f.confirmPwd.errors?.passwordMismatch">
+        Passwords doesnot match
+    </span>
+        </div>
+   
+    
+        
+  
+
+    <button type="submit"  routerLink="register">Register</button><span></span>
+    <button routerLink="/login" *ngIf="loginBut">Login</button>
+  
+  </div>
+
+  <h1 class="text-danger">{{responseMsg}}</h1>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="row"><br><br></div>
+
+    <div class="container-fluid">
+        <h1 class="navbar-brand" style="color: whitesmoke; margin-left: 20px;">User Home</h1>
+        <div class="d-flex">
+            
+            <button  routerLink="/searchFlight" class="btn btn-success mx-3">Search Flight</button>
+            <button  routerLink="/bookFlight" class="btn btn-success mx-4">Book Flight</button>
+            <button    routerLink="/manageBookings" class="btn btn-success mx-3">Manage Bookings</button>
+            <button routerLink="/bookingHistory"    class="btn btn-success mx-3">Booking History</button> 
+            
+            <button (click)="Logout()"  class="btn btn-danger mx-3">LogOut</button>
+        </div>
+    </div>
+</nav>
+
+
+<!--style="background-color: blueviolet;border-color: ghostwhite"
+<div>
+    <app-add-airline [showMePartially]="showVar"></app-add-airline>
+</div>-->
+
+

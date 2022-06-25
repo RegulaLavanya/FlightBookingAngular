@@ -1,0 +1,37 @@
+<app-admin-dashboard></app-admin-dashboard>
+<!--<div *ngIf="showMePartially">-->
+<nav class="navbar navbar-dark bg-dark" >
+    <div class="row"><br><br></div>
+
+    <div class="container-fluid">
+        <h1 class="navbar-brand" style="color: whitesmoke; margin-left: 10px;">Add Flight</h1>
+       
+    </div>
+  
+</nav>
+<form  [formGroup]="flight" (ngSubmit)="onflightSubmit()">
+
+    <div class="form-group">
+        <label for="airline" style="color: rgb(189, 15, 15);"><b>Airline:</b></label>
+        <select style="width: min-content;" formControlName="airline" [(ngModel)]="airline"   (change)="selected()" formControlName="airline" class="form-control">
+            <option disabled  >Select Airline</option>
+           <option *ngFor="let web of airlineList" name="web.airlineName" [ngValue]="web.id">{{web.airlineName}}</option>
+        </select>
+        <div *ngIf="f.airline.touched && f.airline.invalid" class="alert alert-danger">
+            <div *ngIf="f.airline.errors.required">Airline is required.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="flightName" style="color: rgb(189, 15, 15);"><b>Flight Name</b></label>
+        <input type="text" size="10" formControlName="flightName" placeholder="Enter flightName" name="flightName"  ngModel required>
+        <span class="text-danger" *ngIf="(f.flightName.touched || submitted) && f.flightName.errors?.required">
+            <small>Please enter flight name</small></span>
+                         
+    </div>
+    <button type="submit"  style="width: min-content;" class="btn btn-success">Add</button>
+
+    </form>
+    <p>{{responseData}}</p>
+<!--</div>-->
+   

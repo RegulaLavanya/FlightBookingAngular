@@ -1,0 +1,31 @@
+<app-user-home></app-user-home>
+<form [formGroup]="cancel">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-6">
+            <div class="row" style="background-color:white;padding:10px; margin-top: 10px;">
+                <h6 style="text-align: center;color:goldenrod;"><b>Cancel Booking</b></h6>
+            </div><div><br></div>
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3"><b>PNR Number</b></div>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="pnr" class="form-control" placeholder="Airline ID" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+                            
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-4">
+                        <input type="button" (click)="onCancel(cancel.value)"  value="cancel" class="btn btn-danger mt-3" />
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-1"></div>
+                </div>
+        </div>
+    </div>
+    <p class="text-success">{{responseData}}</p>
+    </form>    
+
+
