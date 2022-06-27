@@ -25,7 +25,7 @@ export class BookingServiceService {
 
   GetBookingHistoryByEmail(Email:string){
         let url=this.url+"bookinghistory/"+Email;
-        console.log(this.headers);
+        console.log(typeof(this.headers));
         let res=this.http.get(url,this.headers);
         return res;
   }

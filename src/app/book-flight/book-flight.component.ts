@@ -17,10 +17,23 @@ export class BookFlightComponent implements OnInit {
   airline:any;
   airlineId:any;
   flights:any;
-  copy:any;
+  copy:any;  
+  displayStyle="none";
 
-  test(){
-    alert(this.copy);
+ 
+
+  openPopup(item:any){
+    console.log(item);
+    this.displayStyle="block";
+    this.bookticketForm.controls['ScheduleId'].setValue(item.flightScheduleId);
+    this.bookticketForm.controls['FromPlace'].setValue(item.fromPlace);
+    this.bookticketForm.controls['ToPlace'].setValue(item.toPlace);
+    this.bookticketForm.controls['StartDateTime'].setValue(item.startDateTime);
+    this.bookticketForm.controls['EndDateTime'].setValue(item.endDateTime);
+    //this.bookticketForm.controls['ScheduleId'].setValue(item.toPlace);
+  }
+  closePopup(){
+    this.displayStyle="none";
   }
 
   ngOnInit(): void {

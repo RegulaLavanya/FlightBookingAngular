@@ -1,28 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import {  Observable } from 'rxjs';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router) { }
 
- headers={
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'responseType':'application/json'
-    })
-  }
 
-  headerswithbearer={
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'responseType':'application/json',
-        'Authorization':'Bearer '+localStorage.getItem("token")
-    })
-  }
 
  url="http://localhost:51209/";
  RegisterUserURL="http://localhost:51209/user-register";
@@ -34,6 +21,21 @@ export class AuthServiceService {
  AddScheduleURL="http://localhost:51209/airline-add";
  searchFlightURL="http://localhost:51209/flightsearch";
  GetSchedulesURL="http://localhost:51209/GetSchedules";
+
+ headers={
+  headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType':'application/json'
+  })
+}
+
+headerswithbearer={
+  headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType':'application/json',
+      'Authorization':'Bearer '+localStorage.getItem("token")
+  })
+}
 
 
   RegisterUser(name:any,email:any,password:any):Observable<any>{
@@ -57,7 +59,9 @@ export class AuthServiceService {
   RegisterAirline(airlinename:any):Observable<any>{
     //let url=this.url+"airline-register";
     let body =  JSON.stringify({ AirlineName:airlinename});
-    console.log(this.headerswithbearer);
+    console.log("test"+this.headerswithbearer);
+    if(localStorage.getItem("token") == null)
+      this.router.navigate(['./login']);
     return this.http.post(this.RegisterAirlineURL, body,this.headerswithbearer);
   }
 
@@ -68,9 +72,16 @@ export class AuthServiceService {
 
   RegisterFlight(flightName:any,airlineId:any):Observable<any>{
     //let url=this.url+"Flightregister";
+    let headerswithbearer={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+      })
+    }
     let body =  JSON.stringify({ FlightName:flightName,AirlineId:airlineId});
     console.log(body);
-    return this.http.post(this.RegisterFlightURL, body,this.headerswithbearer);
+    return this.http.post(this.RegisterFlightURL, body,headerswithbearer);
   }
 
   BlockAirline(scheduleId:any):Observable<any>{

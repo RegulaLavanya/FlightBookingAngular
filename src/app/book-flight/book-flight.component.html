@@ -1,8 +1,10 @@
 <app-user-home></app-user-home>
-
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <div class="row d-flex justify-content-center" >
     <div class="col-sm-10">
-        <h1 style="text-align: center; margin-top: 20px;">TicketBooking</h1>
+        <h5 style="text-align: center; margin-top: 20px;color:brown;">Ticket Booking</h5>
         <div><br></div>
         <table class="table table-striped">
             <thead>
@@ -33,8 +35,128 @@
                     <td>{{flight.endDateTime}}</td>
                     <td>{{flight.businessTicketCost}}</td>
                     <td>{{flight.nonBusinessTicketCost}}</td>
-                    <td><button click="test(flight)"  >Book</button></td>
+                    <td><button (click)="openPopup(flight)" data-toggle="modal" data-target="#exampleModal"  >Book</button></td>
                 </tr> 
+
+                                 <!-- Modal -->
+        <div class="modal" [ngStyle]="{'display':displayStyle}" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel" style="color:red"><b>Ticket Booking</b></h5>
+                 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>-->
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="bookticketForm">
+                         <!--<div class="row d-flex justify-content-center">
+                           <div class="col-sm-6 mt-3">-->
+                                <div class="row" style="margin-bottom:10px;">
+
+                                    <div class="col-md-6">
+                                        <label for="inputEmail4" class="form-label"><b> User Name</b></label>
+                                        <input type="text" formControlName="UserName" class="form-control" placeholder="Enter UserName" />
+                                      </div>
+                                      <div class="col-md-6">
+                                        <label for="inputPassword4" class="form-label"><b>Email</b></label>
+                                        <input type="text" formControlName="EmailId" class="form-control" placeholder="Enter Email Id" />
+                                      </div>
+                                
+                        
+                                      <div class="col-md-6">
+                                        <label for="inputPassword4" class="form-label"><b>Total Seats</b></label>
+                                        <input type="number" formControlName="NoOfSeats" class="form-control" placeholder="Enter UserName" />
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <label for="DetailsOfPassenger" class="form-label"><b>DetailsOfPassenger</b></label>
+                                            <input type="text" formControlName="DetailsOfPassenger" class="form-control" placeholder="Details" />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>Select Meal Type</b></label>
+                                        <select  formControlName="MealOption" class="form-select" >
+                                            <option value=0>None</option>  
+                                            <option value=1>Veg</option>                            
+                                            <option value=2>Non-Veg</option>                                                      
+                                        </select> 
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>Seat Numbers</b></label>
+                                        <input type="text" formControlName="SeatNUmbers" class="form-control" placeholder="Enter SeatNumbers" />
+                                      
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>Ticket Cost</b></label>
+                                       
+                                                <input type="number" formControlName="Price" class="form-control" placeholder="Enter SeatNumbers" />
+                                      
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>Schedule Id</b></label>
+                                    
+                                                <input type="number" formControlName="ScheduleId" class="form-control" placeholder="Enter SeatNumbers" />
+                                      
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>Airline:</b></label>
+                                       
+                                            <select  formControlName="AirlineId"  class="form-select" (change)="selected()">
+                                                <option disabled  >Select Airline</option>
+                                               <option *ngFor="let web of airlineList" name="web.airlineName" [ngValue]="web.id">{{web.airlineName}}</option>
+                                            </select>
+                                      
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>FromPlace:</b></label>
+                                        
+                                                <input type="text" formControlName="FromPlace" class="form-control" placeholder="Enter Source" />
+                                      
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>ToPlace:</b></label>
+                                     
+                                                <input type="text" formControlName="ToPlace" class="form-control" placeholder="Enter Destination" />
+                                       
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>Start Date:</b></label>
+                                       
+                                            <input type="datetime-local" formControlName="StartDateTime" class="form-control"/>
+                                     
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Select Meal Tpe" class="form-label"><b>End Date</b></label>
+                                       
+                                            <input type="datetime-local" formControlName="EndDateTime" class="form-control"/>
+                                       
+                                    </div>
+                            
+                            
+
+                                       
+                                </div>
+                          <!--</div> 
+                        </div>--> 
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                  <input type="button" class="btn btn-secondary" (click)="closePopup()"  value="close" data-dismiss="modal"/>
+                  <input type="button" class="btn btn-success" (click)="closePopup()"  value="Book" data-dismiss="modal"/>
+                  <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+              </div>
+            </div>
+          </div>
             </tbody>
         </table>
     </div>
