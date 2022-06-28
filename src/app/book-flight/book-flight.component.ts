@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AuthServiceService } from '../auth-service.service';
+import { BookingServiceService } from '../booking-service.service';
 
 @Component({
   selector: 'app-book-flight',
@@ -10,7 +11,8 @@ import { AuthServiceService } from '../auth-service.service';
 })
 export class BookFlightComponent implements OnInit {
 
-  constructor(private auth:AuthServiceService) { }
+  constructor(private auth:AuthServiceService,
+    private bookservice:BookingServiceService) { }
 
   bookticketForm:any;
   airlineList:any;
@@ -30,7 +32,9 @@ export class BookFlightComponent implements OnInit {
     this.bookticketForm.controls['ToPlace'].setValue(item.toPlace);
     this.bookticketForm.controls['StartDateTime'].setValue(item.startDateTime);
     this.bookticketForm.controls['EndDateTime'].setValue(item.endDateTime);
-    //this.bookticketForm.controls['ScheduleId'].setValue(item.toPlace);
+    this.bookticketForm.controls['AirlineId'].setValue(item.airLineId);
+    this.bookticketForm.controls['EmailId'].setValue(localStorage.getItem('email'));
+    //this.bookticketForm.controls['EmailId'].disable();
   }
   closePopup(){
     this.displayStyle="none";
@@ -41,7 +45,7 @@ export class BookFlightComponent implements OnInit {
       AirlineId: new FormControl('',Validators.required),
       //BoardingTime: new FormControl('',Validators.required),
       UserName: new FormControl('',Validators.required),
-      EmailId: new FormControl(localStorage.getItem('email'),Validators.required),
+      EmailId: new FormControl('',Validators.required),
       NoOfSeats:new FormControl(0,Validators.required),
       DetailsOfPassenger: new FormControl('',Validators.required),
       MealOption: new FormControl('',Validators.required),
@@ -52,7 +56,7 @@ export class BookFlightComponent implements OnInit {
       StartDateTime:new FormControl('',Validators.required),
       EndDateTime:new FormControl('',Validators.required),
       Price:new FormControl(0,Validators.required),
-      ScheduleId:new FormControl(0,Validators.required)
+      ScheduleId:new FormControl('',Validators.required)
 
      
   
@@ -67,7 +71,7 @@ export class BookFlightComponent implements OnInit {
      });
 
      this.auth.GetSchedules().subscribe((data:any)=>{
-      console.log(data);
+     
       if(data != null){
         this.flights = data;
       }
@@ -83,20 +87,19 @@ export class BookFlightComponent implements OnInit {
   }
 
   BookTicket(data:any){
-    // console.log(data);
-   /* this.service.BookTicket(data).subscribe((res:any) => {console.log(res)  
-          if(res.success == 1){
-            alert(res.message);
-            this.router.navigate(['./'+localStorage.getItem('role')]);
-          }
-          else if(res.success == 0){
-            alert(res.message);
-          }
+   console.log(data);
+   //alert(data.EmailId);
+   //return;
+    this.bookservice.BookFlight(data).subscribe((res:any) => {console.log(res)  
+         alert("ticket booked");
+         this.bookticketForm.reset();
+         this.displayStyle="none";
         },(error:HttpErrorResponse)=>{
-          alert("Please Login to continue");
-          this.service.Logout();
+          console.log(error);
+          this.bookticketForm.reset();
+          this.displayStyle="none";
         }
-      );*/
+      );
   }
 
 }

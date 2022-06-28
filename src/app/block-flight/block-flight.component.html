@@ -1,7 +1,7 @@
 <app-admin-dashboard></app-admin-dashboard>
 
 
-<form [formGroup]="blockFlightForm">
+<!--<form [formGroup]="blockFlightForm">
 <div class="row d-flex justify-content-center">
     <div class="col-sm-6">
         <div class="row" style="background-color:white;padding:10px; margin-top: 10px;">
@@ -28,4 +28,28 @@
     </div>
 </div>
 <p class="text-success">{{responseMsg}}</p>
-</form>    
+</form>  -->  
+
+<div class="row d-flex justify-content-center" *ngIf="searchres">
+    <div class="col-sm-10">
+        <h4 style="text-align: center; margin-top: 20px;color: red;margin-right: 120px;">Manage Airlines</h4>
+        <div><br></div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th>Airline ID </th>
+                <th>Airline Name </th>
+                <th>IsActive</th>
+                </tr>
+                </thead>
+                <tbody>
+                   
+                        <tr *ngFor="let flight of airlineList">
+                            <td>{{flight.id}} </td>
+                            <td>{{flight.airlineName}} </td>
+                            <td *ngIf="flight.isActive === active"><input type="button" class="btn btn-danger" (click)="blockFlight(flight)" value="Block"> </td>
+                            <td *ngIf="flight.isActive === inActive"><input type="button" class="btn btn-primary" (click)="blockFlight(flight)" value="Unblock"> </td>
+                          
+                </tbody>
+                </table>
+                </div></div>

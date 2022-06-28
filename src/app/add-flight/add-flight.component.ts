@@ -61,7 +61,7 @@ export class AddFlightComponent implements OnInit {
       console.log(data);
       this.airlineList=data;
      },(error:HttpErrorResponse)=>{
-       alert(error);
+      // alert(error);
         console.log(error.error);
      });
   }

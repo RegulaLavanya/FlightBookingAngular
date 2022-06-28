@@ -60,19 +60,45 @@ headerswithbearer={
     //let url=this.url+"airline-register";
     let body =  JSON.stringify({ AirlineName:airlinename});
     console.log("test"+this.headerswithbearer);
+    let headers={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+      })
+    }
     if(localStorage.getItem("token") == null)
       this.router.navigate(['./login']);
-    return this.http.post(this.RegisterAirlineURL, body,this.headerswithbearer);
+    return this.http.post(this.RegisterAirlineURL, body,headers);
   }
 
   getAirlines():Observable<any>{
    // let url=this.url+"GetAirlines";
-    return this.http.get(this.GetAirlinesURL,this.headerswithbearer);
+   let headers={
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'responseType':'application/json',
+        'Authorization':'Bearer '+localStorage.getItem("token")
+    })
   }
+    return this.http.get(this.GetAirlinesURL,headers);
+  }
+
+  getAllAirlines():Observable<any>{
+     let url=this.url+"GetAllAirlines";
+    let headers={
+     headers: new HttpHeaders({
+         'Content-Type': 'application/json',
+         'responseType':'application/json',
+         'Authorization':'Bearer '+localStorage.getItem("token")
+     })
+   }
+     return this.http.get(url,headers);
+   }
 
   RegisterFlight(flightName:any,airlineId:any):Observable<any>{
     //let url=this.url+"Flightregister";
-    let headerswithbearer={
+    let headers={
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'responseType':'application/json',
@@ -81,24 +107,38 @@ headerswithbearer={
     }
     let body =  JSON.stringify({ FlightName:flightName,AirlineId:airlineId});
     console.log(body);
-    return this.http.post(this.RegisterFlightURL, body,headerswithbearer);
+    return this.http.post(this.RegisterFlightURL, body,headers);
   }
 
   BlockAirline(scheduleId:any):Observable<any>{
     //let url=this.url+"block";
-
-    let body =  JSON.stringify({ Id:scheduleId});
+    let headers={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+      })
+    }
+   // let body =  JSON.stringify({ Id:scheduleId});
+    let body =  JSON.stringify(scheduleId);
     console.log(body);
     
-    return this.http.post(this.BlockAirlineURL, body,this.headerswithbearer);
+    return this.http.post(this.BlockAirlineURL, body,headers);
   }
 
   AddSchedule(schedData:any):Observable<any>{
     //let url=this.url+"airline-add";
     let body =  JSON.stringify(schedData);
     console.log(body);
+    let headers={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+      })
+    }
     
-    return this.http.post(this.AddScheduleURL, body,this.headerswithbearer);
+    return this.http.post(this.AddScheduleURL, body,headers);
   }
 
   Book(schedData:any):Observable<any>{
@@ -113,14 +153,27 @@ headerswithbearer={
    // let url=this.url+"flightsearch";
     let body =  JSON.stringify(data);
     console.log(body);
+    let headers={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+      })
+    }
     
-    return this.http.post(this.searchFlightURL, body,this.headerswithbearer);
+    return this.http.post(this.searchFlightURL, body,headers);
   }
 
   GetSchedules():Observable<any>{
-  
+    let headers={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+      })
+    }
     //let url=this.url+"GetSchedules";
-    return this.http.get(this.GetSchedulesURL,this.headerswithbearer);
+    return this.http.get(this.GetSchedulesURL,headers);
   }
 
   

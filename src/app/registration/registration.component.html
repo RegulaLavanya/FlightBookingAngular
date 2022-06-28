@@ -1,12 +1,66 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 </head>
 <body>
 
-<h2>Registration Form</h2>
+    <nav class="navbar navbar-dark bg-dark" >
+        <div class="row"><br><br></div>
+      
+        <div class="container-fluid">
+            <h1 class="navbar-brand"  style="color: whitesmoke; margin-left: 10px;background-color: #9c27b9">Flight Booking</h1>
+            <div class="d-flex">
+              <button routerLink="/login"  class="btn btn-success mx-3 submit">Login</button> 
+             <!--<button routerLink="/addflight"  class="btn btn-success mx-3 submit">Track</button>-->
+             </div>
+          </div>
+        </nav>
+
+        <div class="main">
+            <p class="sign" align="center">Register</p>
+            <form [formGroup]="registrationForm" (ngSubmit)="onRegSubmit()">
+              <input class="un "  type="text"  formControlName="uname" align="center" placeholder="Enter Username" name="uname"  ngModel>
+
+                <p class="text-danger" align="center" *ngIf="(f.uname.touched || submitted) && f.uname.errors?.required">
+                    <small>Please enter your name</small></p>
+
+                    <input  class="un " type="email"  formControlName="email" placeholder="Enter Email" name="email"  ngModel>
+                    <p class="text-danger" align="center"
+                       *ngIf="(f.email.touched || submitted) && f.email.errors?.required">
+                       Email is required
+                    </p>
+                   <p class="text-danger"  align="center"
+                       *ngIf="f.email.touched && f.email.errors?.email">
+                       Enter a valid email address
+                    </p>
+        
+  
+              <input class="pass" type="password" align="center" formControlName="pwd" placeholder="Password">
+        
+              <p align="center" class="text-danger"  *ngIf="(f.pwd.touched || submitted) && f.pwd.errors?.required">
+                Password is required</p>
+                
+                <input class="pass" type="password" align="center" formControlName="confirmPwd" placeholder="Confirm Password">
+        
+                <p align="center" class="text-danger"   *ngIf="(f.confirmPwd.touched || submitted)&& f.confirmPwd.errors?.required">
+                    Confirm Password is required</p>
+
+                    <p align="center" class="text-danger"   *ngIf="f.confirmPwd.touched && f.confirmPwd.errors?.passwordMismatch">
+                        Passwords doesnot match</p>
+          
+        
+                <input class="submit" type="button"  type="submit" value="Register" align="center"  >
+            
+                </form>        
+            </div>
+
+<!--<h2>Registration Form</h2>
 
 
 
@@ -76,7 +130,7 @@
   </div>
 
   <h1 class="text-danger">{{responseMsg}}</h1>
-</form>
+</form>-->
 
 </body>
 </html>

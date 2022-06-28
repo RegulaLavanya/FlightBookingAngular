@@ -1,7 +1,8 @@
 <app-user-home></app-user-home>
-<form [formGroup]="searchForm">
-    <h2 class="row d-flex justify-content-center" style="margin-top: 20px;">Flight Search</h2> <br>
-    <div class="col-sm-4 offset-4 d-flex justify-content-center" ><b>Source:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<form [formGroup]="searchForm" >
+    <h5 class="row d-flex justify-content-center" style="margin-top: 20px;color:red;margin-right: 120px;">Flight Search</h5> <br>
+    
+    <!--<div class="col-sm-4 offset-4 d-flex justify-content-center" ><b>Source:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" formControlName="FromPlace" placeholder="Enter Source" class="form-control"/>
     </div><div ><br></div>
     
@@ -9,16 +10,41 @@
         <input type="text" formControlName="ToPlace" placeholder="Enter Destination" class="form-control"/>
     </div><div ><br></div>
 
-    <div class="col-lg-4 offset-4 d-flex"><b>StartDate:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="col-lg-4 offset-4 d-flex"><b>StartDate:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="datetime-local" formControlName="StartDateTime" class="form-control"/>
     </div><div ><br></div>
 
-    <div class="col-lg-4 offset-4 d-flex"><b>EndDate:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="col-lg-4 offset-4 d-flex"><b>EndDate:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="datetime-local" formControlName="EndDateTime" class="form-control"/>
-    </div><div ><br></div>
+    </div><div ><br></div>-->
+    <div class="row g-2"  style="margin-left: 200px;">
+        <div class="col-md-4">
+        <label  class="form-label"><b>Source</b></label>
+        <input type="text" formControlName="FromPlace" class="form-control" placeholder="Enter Source" />
+      </div>
+
+      <div class="col-md-4">
+        <label  class="form-label"><b>Destination</b></label>
+        <input type="text" formControlName="ToPlace" class="form-control" placeholder="Enter Destination" />
+      </div>
+    </div>
+      
+    <div class="row g-2" style="margin-left: 200px;">
+      <div class="col-md-4">
+        <label for="inputEmail4" class="form-label"><b>StartDate</b></label>
+        <input type="datetime-local" formControlName="StartDateTime" class="form-control" placeholder="Enter UserName" />
+      </div>
+      
+      <div class="col-md-4">
+        <label for="inputPassword4" class="form-label"><b>EndDate</b></label>
+        <input type="datetime-local" formControlName="EndDateTime" class="form-control" placeholder="Enter Email Id" />
+      </div>
+    </div>
+
     
     <div class="col-sm-5" style="text-align: center;margin-top: 10px;align-items: center;"><br>
-        <button type="button" (click)="SearchFlight(searchForm.value)" class="btn btn-primary mx-2 text-center">Search</button>
+        <!--<button type="button" (click)="SearchFlight(searchForm.value)" class="btn btn-primary mx-2 text-center">Search</button>-->
+        <input type="button" style="margin-left: 519px;" class="btn btn-info" (click)="SearchFlight(searchForm.value)"  value="Search" />
     </div>
 
   
@@ -26,7 +52,7 @@
     
     <div class="row d-flex justify-content-center" *ngIf="searchres">
         <div class="col-sm-10">
-            <h1 style="text-align: center; margin-top: 20px;">Search Results</h1>
+            <h4 style="text-align: center; margin-top: 20px;color: red;margin-right: 120px;font-style: italic;">Search Results</h4>
             <div><br></div>
             <table class="table table-striped">
                 <thead>

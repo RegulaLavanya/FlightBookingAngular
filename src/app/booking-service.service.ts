@@ -16,33 +16,39 @@ export class BookingServiceService {
       })};
   url="http://localhost:51209/";
 
-  Getpnrdata():Observable<any>{
-          let url=this.url+"ticket/tXHIaOu8";
+  Getpnrdata(pnr:any):Observable<any>{
+          let url=this.url+"ticket/"+pnr;
           let res=this.http.get(url);
-          alert(res);
+         // alert(res);
           return res;
         }
 
   GetBookingHistoryByEmail(Email:string){
         let url=this.url+"bookinghistory/"+Email;
+       let fheaders={headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+        })};
         console.log(typeof(this.headers));
-        let res=this.http.get(url,this.headers);
+        let res=this.http.get(url,fheaders);
         return res;
   }
 
-  BookFlight(scheduleid:number):Observable<any>{
-    let url=this.url+scheduleid+"/booking";
-   let body ={};
-    this.http.post(url, body,this.headers).subscribe(data => 
-      {
-        this.data=data;
-      },
-      (error:HttpErrorResponse)=>{
-      alert("Error in flight booking");
-      }
+  BookFlight(data:any):Observable<any>{
+    let url=this.url+"booking";
+    let body =  JSON.stringify(data);
+
+    let headers={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+      })
+    }
     
-    );
-    return (this.data);
+    return this.http.post(url, body,headers);
+    
   }
 
   CancelBooking(data:any){

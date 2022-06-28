@@ -3,26 +3,28 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!--<link rel="stylesheet" href="css/style.css">-->
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <title>Sign in</title>
 </head>
 <body>
 
-<h2 style="background-color: #04AA6D;text-align: center;">Login Form</h2>
+<!--h2 style="background-color: #04AA6D;text-align: center;">Login Form</h2>-->
+<nav class="navbar navbar-dark bg-dark" >
+  <div class="row"><br><br></div>
 
-
-
-<form  [formGroup]="registrationForm" (ngSubmit)="onRegSubmit()">
- <!-- <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div> -->
-
+  <div class="container-fluid">
+      <h1 class="navbar-brand"  style="color: whitesmoke; margin-left: 10px;background-color: #9c27b9">Flight Booking</h1>
+      <div class="d-flex">
+        <button routerLink="/register"  class="btn btn-success mx-3 submit">Register</button> 
+      <!-- <button routerLink="/addflight"  class="btn btn-success mx-3 submit">Track</button>-->
+       </div>
+    </div>
+  </nav>
+<!--<form  [formGroup]="registrationForm" (ngSubmit)="onRegSubmit()">
  <div class="container">
-     <!--<div class="form-group">
-        <label for="uname"><b>Username</b></label>
-        <input type="text"  formControlName="uname" placeholder="Enter Username" name="uname"  ngModel required>
-     
-        <span class="text-danger" *ngIf="(f.uname.touched || submitted) && f.uname.errors?.required"><small>Please enter your name</small></span>
-                         
-    </div>-->
 
     <div class="form-group">
       <label for="email"><b>Email</b></label>
@@ -50,24 +52,40 @@
     letter and 1 number
 </span>  
   </div>
-   
     
   <button type="submit" routerLink="/login" >Login</button><span></span>
 
   <button  routerLink="/register">Register</button>
-
-    
-   <!--<label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>-->
   </div>
-
-  <!--<div class="container" style="background-color:#f1f1f1">
-    
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div> -->
   <h1 class="text-danger">{{responseMsg}}</h1>
-</form>
+</form>-->
+
+
+
+  <div class="main">
+    <p class="sign" align="center">Sign in</p>
+    <form [formGroup]="registrationForm" (ngSubmit)="onRegSubmit()">
+      <input class="un "  type="email" formControlName="email" align="center" placeholder="Enter Email" name="email"  ngModel>
+
+      <p align="center" class="text-danger" *ngIf="(f.email.touched || submitted) && f.email.errors?.required">
+        Email is required</p>
+
+        <p align="center" class="text-danger" *ngIf="f.email.touched && f.email.errors?.email">
+          Enter a valid email address</p>
+      <input class="pass" type="password"  formControlName="pwd" align="center" placeholder="Password">
+
+      <p align="center" class="text-danger"  *ngIf="(f.pwd.touched || submitted) && f.pwd.errors?.required">
+        Password is required</p>
+
+
+        <input class="submit" type="button"  type="submit" value="Login" align="center"  >
+         <!-- <input class="submit" type="button" value="register" align="center"  routerLink="/register">
+  <a class="submit" style="margin-top: 1000px;" align="center" routerLink="/register">Register</a>-->
+
+        </form>        
+    </div>
+
+
 
 
 </body>

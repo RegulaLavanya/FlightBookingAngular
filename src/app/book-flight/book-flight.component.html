@@ -71,7 +71,7 @@
                             
                                     <div class="col-md-6">
                                         <label for="DetailsOfPassenger" class="form-label"><b>DetailsOfPassenger</b></label>
-                                            <input type="text" formControlName="DetailsOfPassenger" class="form-control" placeholder="Details" />
+                                            <input type="text" formControlName="DetailsOfPassenger" class="form-control" placeholder="Name:age:gender" />
                                     </div>
 
                                     <div class="col-md-6">
@@ -151,7 +151,7 @@
                 </div>
                 <div class="modal-footer">
                   <input type="button" class="btn btn-secondary" (click)="closePopup()"  value="close" data-dismiss="modal"/>
-                  <input type="button" class="btn btn-success" (click)="closePopup()"  value="Book" data-dismiss="modal"/>
+                  <input type="button" class="btn btn-success" (click)="BookTicket(bookticketForm.value)"  value="Book" data-dismiss="modal"/>
                   <!--<button type="button" class="btn btn-primary">Save changes</button>-->
                 </div>
               </div>
@@ -329,3 +329,5 @@
     </div>
 </div>
 </form>-->
+
+

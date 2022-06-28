@@ -1,0 +1,62 @@
+<app-user-home></app-user-home>
+<form [formGroup]="getTicket">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-6">
+            <div class="row" style="background-color:white;padding:10px; margin-top: 10px;">
+                <h6 style="text-align: center;color:goldenrod;"><b>TicketDetails by PNR</b></h6>
+            </div><div><br></div>
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3"><b>PNR Number</b></div>
+                <div class="col-sm-6">
+                    <input type="text" formControlName="pnr" class="form-control" placeholder="PNR number" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+                            
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-1"></div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-4">
+                        <input type="button" (click)="onGetDetails(getTicket.value)"  value="Get Details" class="btn btn-danger mt-3" />
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-1"></div>
+                </div>
+        </div>
+    </div>
+    </form> 
+    <div class="row d-flex justify-content-center" *ngIf="searchres">
+        <div class="col-sm-10">
+            <h4 style="text-align: center; margin-top: 20px;color: red;margin-right: 120px;font-style: italic;">Search Results</h4>
+            <div><br></div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Airline ID </th>
+                    <!--<th>Airline Name</th> -->
+                    <th>Source</th> 
+                    <th>Destination</th> 
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Ticket Cost</th>
+                    <th>PNR</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ><!--*ngFor="let flight of TicketData">-->
+                        <td>{{airLineId}} </td>
+                        <!--<td>{{flight.flightName}}</td>-->
+                        <td>{{fromPlace}}</td>
+                        <td>{{toPlace}}</td>
+                        <td>{{startDateTime}}</td>
+                        <td>{{endDateTime}}</td>
+                        <td>{{price}}</td>
+                        <td>{{pnrId}}</td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+        </div>
+   

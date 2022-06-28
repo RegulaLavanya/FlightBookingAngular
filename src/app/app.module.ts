@@ -19,6 +19,7 @@ import { BookingHistoryComponent } from './booking-history/booking-history.compo
 import { SearchFlightComponent } from './search-flight/search-flight.component';
 import { BookFlightComponent } from './book-flight/book-flight.component';
 import { ManageBookingsComponent } from './manage-bookings/manage-bookings.component';
+import { GetTicketDetailsComponent } from './get-ticket-details/get-ticket-details.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ManageBookingsComponent } from './manage-bookings/manage-bookings.compo
     BookingHistoryComponent,
     SearchFlightComponent,
     BookFlightComponent,
-    ManageBookingsComponent
+    ManageBookingsComponent,
+    GetTicketDetailsComponent
   ],
   imports: [
     BrowserModule,
