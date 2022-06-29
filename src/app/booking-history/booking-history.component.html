@@ -12,6 +12,7 @@
             <thead style="background-color:lightsalmon;">
                 <tr>
                 <th scope="col">Airline ID </th>
+                <th>FlightName</th> 
                 <th>Source</th> 
                 <th>Destination</th>
                 <th>Boarding Time</th>
@@ -25,6 +26,7 @@
             <tbody>
                 <tr *ngFor="let item of ticketHistory" >
                     <td style="text-align: center;">{{item.airLineId}}</td>
+                    <td>{{item.flightName}}</td>
                     <td>{{item.fromPlace}}</td>
                     <td>{{item.toPlace}}</td>
                     <td>{{item.startDateTime}} </td>

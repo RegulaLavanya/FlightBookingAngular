@@ -12,15 +12,28 @@ export class AuthServiceService {
 
 
  url="http://localhost:51209/";
- RegisterUserURL="http://localhost:51209/user-register";
- ValidateLoginURL="http://localhost:51209/login";
- RegisterAirlineURL="http://localhost:51209/airline-register";
- GetAirlinesURL="http://localhost:51209/GetAirlines";
- RegisterFlightURL="http://localhost:51209/Flightregister";
- BlockAirlineURL="http://localhost:51209/block";
- AddScheduleURL="http://localhost:51209/airline-add";
- searchFlightURL="http://localhost:51209/flightsearch";
- GetSchedulesURL="http://localhost:51209/GetSchedules";
+ RegisterUserURL="https://authenticationservice20220628163005.azurewebsites.net/api/v1.0/flight/user/register";
+ //"http://localhost:51209/user-register";
+ ValidateLoginURL="https://authenticationservice20220628163005.azurewebsites.net/api/v1.0/flight/login";
+ //"http://localhost:51209/login";
+ RegisterAirlineURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/airline/register";
+ //"http://localhost:51209/airline-register";
+ GetAirlinesURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/GetAirlines";
+ //"http://localhost:51209/GetAirlines";
+ RegisterFlightURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/register";
+ //"http://localhost:51209/Flightregister";
+ BlockAirlineURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/block";
+ //"http://localhost:51209/block";
+ AddScheduleURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/airline/inventory/add";
+ //http://localhost:51209/airline-add";
+ searchFlightURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/search";
+ //"http://localhost:51209/flightsearch";
+ GetSchedulesURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/GetSchedule";
+ //"http://localhost:51209/GetSchedules";
+ GetDiscountsURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/GetDiscounts";
+ //"http://localhost:51209/GetDiscounts";
+ AddDiscountsURL="https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/AddDiscounts";
+ //"http://localhost:51209/AddDiscounts";
 
  headers={
   headers: new HttpHeaders({
@@ -85,7 +98,8 @@ headerswithbearer={
   }
 
   getAllAirlines():Observable<any>{
-     let url=this.url+"GetAllAirlines";
+    // let url=this.url+"GetAllAirlines";
+     let url= "https://inventorymanagementservice20220628212243.azurewebsites.net/api/v1.0/flight/GetAllAirlines";
     let headers={
      headers: new HttpHeaders({
          'Content-Type': 'application/json',
@@ -175,6 +189,30 @@ headerswithbearer={
     //let url=this.url+"GetSchedules";
     return this.http.get(this.GetSchedulesURL,headers);
   }
+
+  GetDiscounts():Observable<any>{
+    let headers={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType':'application/json',
+          'Authorization':'Bearer '+localStorage.getItem("token")
+      })
+    }
+    return this.http.get(this.GetDiscountsURL,headers);
+  }
+
+  AddDiscounts(data:any):Observable<any>{
+     let body =  JSON.stringify(data);
+     console.log(body);
+     let headers={
+       headers: new HttpHeaders({
+           'Content-Type': 'application/json',
+           'responseType':'application/json',
+           'Authorization':'Bearer '+localStorage.getItem("token")
+       })
+     }
+     return this.http.post(this.AddDiscountsURL, body,headers);
+   }
 
   
   

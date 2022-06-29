@@ -20,7 +20,7 @@ export class BookingHistoryComponent implements OnInit {
   openPopup(item:any){
     this.displayStyle="block";
     console.log(item);
-    this.newdata1=[[item.airLineId,item.fromPlace,item.toPlace,item.startDateTime,item.seatNUmbers,item.price,item.pnr]]
+    this.newdata1=[[item.airLineId,item.flightName,item.fromPlace,item.toPlace,item.startDateTime,item.seatNUmbers,item.price,item.pnr]]
     this.createPdf();
   }
 
@@ -31,7 +31,7 @@ export class BookingHistoryComponent implements OnInit {
 
    }
 
-   head = [['Airline ID', 'Source', 'Destination', 'Boarding Time','Seat Numbers','Price','PNR']]
+   head = [['Airline ID','FlightName', 'Source', 'Destination', 'Boarding Time','Seat Numbers','Price','PNR']]
 
   ngOnInit(): void {
     this.bookingHistory(localStorage.getItem('email'));

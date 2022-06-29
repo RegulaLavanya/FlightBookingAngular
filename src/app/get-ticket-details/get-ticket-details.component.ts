@@ -22,7 +22,8 @@ export class GetTicketDetailsComponent implements OnInit {
      startDateTime:any;
      endDateTime:any;
      price:any;
-     pnrId:any
+     pnrId:any;
+     responsemsg:any;
 
   constructor(private formBuilder:FormBuilder,
     private bookingService: BookingServiceService) { }
@@ -60,8 +61,12 @@ export class GetTicketDetailsComponent implements OnInit {
      
    
       this.getTicket.reset();
+      this.responsemsg="";
      },(error:HttpErrorResponse)=>{
         console.log(error);  
+        this.searchres=false;
+        this.responsemsg=error.error;
+        this.getTicket.reset();
      });
     }
 

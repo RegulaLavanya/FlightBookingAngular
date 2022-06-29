@@ -15,6 +15,7 @@ export class AddAirlineComponent implements OnInit {
   airline:any;
   submitted:any;
   responseData:any;
+  airlineList:any;
 
   get f() { return this.airline.controls; }
   
@@ -28,6 +29,9 @@ export class AddAirlineComponent implements OnInit {
        console.log(data);
        this.airline.reset();
        this.responseData=data.airlineName+"  added!";
+       alert( this.responseData);
+       this.GetAirlines();
+       this.responseData="";
       },(error:HttpErrorResponse)=>{
          console.log(error.error);
          this.airline.reset();
@@ -38,8 +42,9 @@ export class AddAirlineComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
- this.responseData="";
+  ngOnInit(): void
+   {
+      this.responseData="";
 
     this.airline=this.formBuilder.group({
       airlineName :['',Validators.required],
@@ -47,6 +52,20 @@ export class AddAirlineComponent implements OnInit {
     })
 
     this.submitted=false;
+
+    this.GetAirlines();
+
+  
+  }
+
+  GetAirlines(){
+  this.authService.getAllAirlines().subscribe((data:any)=>{
+    console.log(data);
+    this.airlineList=data;
+   },(error:HttpErrorResponse)=>{
+    // alert(error);
+      console.log(error.error);
+   });
   }
 
 }
