@@ -44,6 +44,8 @@ export class ManageDiscountsComponent implements OnInit {
     },
     (error:HttpErrorResponse)=>{
       console.log(error);
+      alert(error.error);
+      this.discountForm.reset();
     }
   );}
 
